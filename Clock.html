@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Clock</title>
+    <link rel="stylesheet" href="Clock.css">
+</head>
+<body>
+    <div class="Clock">
+        <div class="numbers">
+            <span style="--i:0;"><b>12</b></span>
+            <span style="--i:1;"><b>3</b></span>
+            <span style="--i:2;"><b>6</b></span>
+            <span style="--i:3;"><b>9</b></span>
+            <div class="circle" id="hr"><i></i></div>
+            <div class="circle" id="mn"><i></i></div>
+            <div class="circle" id="sc"><i></i></div>
+        </div>
+    </div>
+    <script>
+        let HtmlTime = {
+            hour: document.querySelector('#hr'),
+            minute: document.querySelector('#mn'),
+            second: document.querySelector('#sc')
+        }
+
+        function setTime() {
+            let time = new Date();
+            let hour = time.getHours() * 30;
+            let minute = time.getMinutes() * 6;
+            let second = time.getSeconds() * 6;
+            
+            HtmlTime.hour.style.transform = `rotateZ(${hour+(minute/12)}deg)`;
+            HtmlTime.minute.style.transform = `rotateZ(${minute}deg)`;
+            HtmlTime.second.style.transform = `rotateZ(${second}deg)`;
+        }
+
+        setInterval(setTime, 1000);
+    </script>
+</body>
+</html>
